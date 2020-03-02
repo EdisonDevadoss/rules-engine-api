@@ -1,5 +1,5 @@
 {
-  "name": "cst-api",
+  "name": "rules-engine-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -50,6 +50,7 @@
     "lodash": "^4.17.15",
     "pg": "^7.17.1",
     "pg-hstore": "^2.3.3",
+    "pino": "^5.17.0",
     "pino-pretty": "^3.5.0",
     "sequelize": "^5.21.3"
   },

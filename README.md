@@ -1,4 +1,4 @@
-# cst-api
+# Rules-engine-api
 
 ### Creating Application:
 
@@ -6,9 +6,9 @@
 
 ### Clone repository:
 
-> \$ git clone git@github.com:EdisonDevadoss/cst-api.git
+> \$ git clone https://github.com/EdisonDevadoss/rules-engine-api.git
 
-> \$ cd cst-api
+> \$ cd rules-engine-api
 
 > \$ npm install
 
