@@ -8,7 +8,11 @@ module.exports = {
     },
     device_id: {
       type: Sequelize.BIGINT,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'devices',
+        key: 'id'
+      }
     },
     device_name: {
       type: Sequelize.STRING,

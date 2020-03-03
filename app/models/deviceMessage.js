@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       device_id: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'devices',
+          key: 'id'
+        }
       },
       temperature: {
         type: DataTypes.STRING,
