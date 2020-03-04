@@ -1,4 +1,4 @@
-const DeviceMessageService = require('../services/clusterMessage.service');
+const DeviceMessageService = require('../services/deviceMessage.service');
 
 exports.create = (req, reply) => {
   const attributes = req.body.device;
