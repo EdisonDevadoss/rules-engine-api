@@ -7,6 +7,7 @@ const cors = require('fastify-cors');
 const swaggerOptions = require('./lib/swagger');
 const renderError = require('./lib/renderError');
 const actionRoutes = require('./app/routes/actions.routes');
+const deviceMessagesRoutes = require('./app/routes/deviceMessages.routes');
 
 function build() {
   fastify.register(cors, {
@@ -22,6 +23,7 @@ function build() {
 
   fastify.register(swagger, swaggerOptions);
   fastify.register(actionRoutes, { prefix: '/v1' });
+  fastify.register(deviceMessagesRoutes, { prefix: '/v1' });
 
   return fastify;
 }
