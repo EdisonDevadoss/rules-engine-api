@@ -9,6 +9,7 @@ const renderError = require('./lib/renderError');
 const actionRoutes = require('./app/routes/actions.routes');
 const deviceMessagesRoutes = require('./app/routes/deviceMessages.routes');
 const deviceRoutes = require('./app/routes/devices.routes');
+const ruleRoutes = require('./app/routes/rules.routes');
 
 function build() {
   fastify.register(cors, {
@@ -26,6 +27,7 @@ function build() {
   fastify.register(actionRoutes, { prefix: '/v1' });
   fastify.register(deviceMessagesRoutes, { prefix: '/v1' });
   fastify.register(deviceRoutes, { prefix: '/v1' });
+  fastify.register(ruleRoutes, { prefix: '/v1' });
 
   return fastify;
 }
