@@ -8,11 +8,11 @@ module.exports = {
     },
     rule_id: {
       type: Sequelize.BIGINT,
-      allowNull: false
-      // references: {
-      //   model: 'rules',
-      //   key: 'id'
-      // }
+      allowNull: false,
+      references: {
+        model: 'rules',
+        key: 'id'
+      }
     },
     rule: {
       type: Sequelize.JSONB,

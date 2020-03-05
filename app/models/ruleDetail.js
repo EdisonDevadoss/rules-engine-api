@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       rule_id: {
         type: DataTypes.BIGINT,
-        allowNull: false
-        // references: {
-        //   model: 'rules',
-        //   key: 'id'
-        // }
+        allowNull: false,
+        references: {
+          model: 'rules',
+          key: 'id'
+        }
       },
       rule: {
         type: DataTypes.JSONB,
