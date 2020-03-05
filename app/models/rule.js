@@ -1,10 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const Action = sequelize.define(
-    'Action',
+  const Rule = sequelize.define(
+    'Rule',
     {
       name: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     },
     {
@@ -13,5 +17,5 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: 'updated_at'
     }
   );
-  return Action;
+  return Rule;
 };
