@@ -24,8 +24,8 @@ const createDeviceMessageSchema = {
           id: { type: 'number' },
           device_id: { type: 'string' },
           device_name: { type: 'string' },
-          temperature: { type: 'string' },
-          voltage: { type: 'string' },
+          temperature: { type: 'number' },
+          voltage: { type: 'number' },
           created_at: { type: 'string' },
           updated_at: { type: 'string' }
         }
