@@ -1,4 +1,5 @@
-const { EmptyResultError } = require('sequelize');
+const { EmptyResultError, DatabaseError } = require('sequelize');
+const { split } = require('lodash');
 const { RuleDetail } = require('../models');
 
 function create(attributes) {
@@ -22,6 +23,22 @@ function update(id, attributes) {
   return getById(id).then(ruleResult => ruleResult.update(attributes));
 }
 
+function destroy(ids) {
+  const splittedIDs = split(ids, ',');
+  return RuleDetail.destroy({ where: { id: splittedIDs } }).catch((error) => {
+    if (error instanceof DatabaseError) {
+      throw new DatabaseError('Bad request please check parameters');
+    }
+    else {
+      return error;
+    }
+  });
+}
+
 module.exports = {
-  create, list, getById, update
+  create,
+  list,
+  getById,
+  update,
+  destroy
 };

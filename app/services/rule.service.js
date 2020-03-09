@@ -1,6 +1,6 @@
 const { EmptyResultError, DatabaseError } = require('sequelize');
 const { split } = require('lodash');
-const { Rule } = require('../models');
+const { Rule, RuleDetail, sequelize } = require('../models');
 
 function create(attributes) {
   return Rule.create(attributes);
@@ -25,14 +25,19 @@ function update(id, attributes) {
 
 function destroy(ids) {
   const splittedIDs = split(ids, ',');
-  return Rule.destroy({ where: { id: splittedIDs } }).catch((error) => {
-    if (error instanceof DatabaseError) {
-      throw new DatabaseError('Bad request please check parameters');
-    }
-    else {
-      return error;
-    }
-  });
+  return sequelize.transaction(t => RuleDetail.destroy({
+    where: { rule_id: splittedIDs },
+    transaction: t
+  })
+    .then(() => Rule.destroy({ where: { id: splittedIDs }, transaction: t }))
+    .catch((error) => {
+      if (error instanceof DatabaseError) {
+        throw new DatabaseError('Bad request please check parameters');
+      }
+      else {
+        return error;
+      }
+    }));
 }
 
 module.exports = {
