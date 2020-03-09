@@ -7,6 +7,7 @@ function create(attributes) {
     const ruleDetails = await RuleDetail.findAll();
     map(ruleDetails, (ruleDetail) => {
       const { edges } = ruleDetail.rule;
+      const ruleDetailId = ruleDetail.id;
       if (size(edges) > 0) {
         const currentEdge = edges[0];
         const fact = {
@@ -14,7 +15,7 @@ function create(attributes) {
           temperature: message.temperature,
           voltage: message.voltage
         };
-        ruleExe(edges, currentEdge.source_id, fact);
+        ruleExe(edges, currentEdge.source_id, fact, ruleDetailId);
       }
     });
     return message;
