@@ -12,7 +12,8 @@ exports.create = (req, reply) => {
 };
 
 exports.list = (req, reply) => {
-  RuleDetailService.list()
+  const { query } = req;
+  RuleDetailService.list(query)
     .then((rules) => {
       reply.code(200).send(rules);
     })

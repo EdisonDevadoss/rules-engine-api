@@ -1,13 +1,14 @@
 const { EmptyResultError, DatabaseError } = require('sequelize');
-const { split } = require('lodash');
+const { split, size } = require('lodash');
 const { RuleDetail } = require('../models');
 
 function create(attributes) {
   return RuleDetail.create(attributes);
 }
 
-function list() {
-  return RuleDetail.findAll();
+function list(params) {
+  const queries = size(params) > 0 ? { rule_id: params.rule_id } : {};
+  return RuleDetail.findAll({ where: { ...queries } });
 }
 
 function getById(id) {
