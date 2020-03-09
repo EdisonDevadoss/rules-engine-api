@@ -7,14 +7,15 @@ function create(attributes) {
     const ruleDetails = await RuleDetail.findAll();
     map(ruleDetails, (ruleDetail) => {
       const { edges } = ruleDetail.rule;
+      const ruleDetailId = ruleDetail.id;
       if (size(edges) > 0) {
         const currentEdge = edges[0];
         const fact = {
-          device_name: message.device_name,
-          temperature: message.temperature,
-          voltage: message.voltage
+          device_name: 'device01',
+          temperature: 32,
+          voltage: 33
         };
-        ruleExe(edges, currentEdge.source_id, fact);
+        ruleExe(edges, currentEdge.source_id, fact, ruleDetailId);
       }
     });
     return message;

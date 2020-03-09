@@ -12,7 +12,6 @@ const ruleRoutes = require('./app/routes/rules.routes');
 const deviceMessagesRoutes = require('./app/routes/deviceMessages.routes');
 const ruleDetailsRoutes = require('./app/routes/ruleDetails.routes');
 
-
 function build() {
   fastify.register(cors, {
     origin: '*',
