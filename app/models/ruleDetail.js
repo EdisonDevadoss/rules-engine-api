@@ -21,5 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: 'updated_at'
     }
   );
+  RuleDetail.associate = (models) => {
+    RuleDetail.belongsTo(models.Rule, {
+      foreignKey: 'rule_id',
+      as: 'rules'
+    });
+  };
   return RuleDetail;
 };

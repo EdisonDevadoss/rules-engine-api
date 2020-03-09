@@ -32,13 +32,23 @@ exports.getById = (req, reply) => {
     });
 };
 
-
 exports.update = (req, reply) => {
   const { id } = req.params;
   const attributes = req.body.ruleDetail;
   RuleDetailService.update(id, attributes)
     .then((updatedRule) => {
       reply.code(200).send(updatedRule);
+    })
+    .catch((error) => {
+      reply.send(error);
+    });
+};
+
+exports.delete = (req, reply) => {
+  const { ids } = req.query;
+  RuleDetailService.destroy(ids)
+    .then(() => {
+      reply.code(200).send({ message: 'Rule_details deleted successfully' });
     })
     .catch((error) => {
       reply.send(error);

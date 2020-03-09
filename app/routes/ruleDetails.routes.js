@@ -5,6 +5,7 @@ function ruleDetails(fastify, opts, next) {
   fastify.get('/rule_details', ruleDetailsController.list);
   fastify.get('/rule_details/:id', ruleDetailsController.getById);
   fastify.put('/rule_details/:id', ruleDetailsController.update);
+  fastify.delete('/rule_details', ruleDetailsController.delete);
   next();
 }
 
