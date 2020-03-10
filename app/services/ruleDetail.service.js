@@ -1,6 +1,6 @@
 const { EmptyResultError, DatabaseError } = require('sequelize');
-const { split, size } = require('lodash');
-const { RuleDetail } = require('../models');
+const { split, size, map } = require('lodash');
+const { RuleDetail, Rule } = require('../models');
 
 function create(attributes) {
   return RuleDetail.create(attributes);
@@ -8,7 +8,17 @@ function create(attributes) {
 
 function list(params) {
   const queries = size(params) > 0 ? { rule_id: params.rule_id } : {};
-  return RuleDetail.findAll({ where: { ...queries } }, { order: [['updated_at', 'DESC']] });
+  return RuleDetail.findAll({
+    where: { ...queries },
+    order: [['updated_at', 'DESC']],
+    include: [{ model: Rule, as: 'rules', attributes: ['name'] }]
+  }).then((ruleDetails) => {
+    const data = map(ruleDetails, ruleDetail => ({
+      rule_name: ruleDetail.rules.name,
+      ...ruleDetail.dataValues
+    }));
+    return data;
+  });
 }
 
 function getById(id) {
