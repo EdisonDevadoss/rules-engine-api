@@ -4,4 +4,8 @@ function create(attributes) {
   return Notification.create(attributes);
 }
 
-module.exports = { create };
+function list() {
+  return Notification.findAll();
+}
+
+module.exports = { create, list };
