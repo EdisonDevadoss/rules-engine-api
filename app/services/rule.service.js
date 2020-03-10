@@ -7,7 +7,7 @@ function create(attributes) {
 }
 
 function list() {
-  return Rule.findAll();
+  return Rule.findAll({ order: [['updated_at', 'DESC']] });
 }
 
 function getById(id) {

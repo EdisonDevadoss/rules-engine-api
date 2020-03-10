@@ -1,7 +1,7 @@
 const { Device } = require('../models');
 
 function list() {
-  return Device.findAll().then(devices => devices);
+  return Device.findAll({ order: [['updated_at', 'DESC']] });
 }
 
 module.exports = { list };
