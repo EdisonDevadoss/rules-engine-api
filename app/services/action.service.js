@@ -1,7 +1,7 @@
 const { Action } = require('../models');
 
 function list() {
-  return Action.findAll().then(actions => actions);
+  return Action.findAll({ order: [['updated_at', 'DESC']] });
 }
 
 module.exports = { list };

@@ -5,7 +5,7 @@ function create(attributes) {
 }
 
 function list() {
-  return Notification.findAll();
+  return Notification.findAll({ order: [['updated_at', 'DESC']] });
 }
 
 module.exports = { create, list };

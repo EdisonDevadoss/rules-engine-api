@@ -8,7 +8,7 @@ function create(attributes) {
 
 function list(params) {
   const queries = size(params) > 0 ? { rule_id: params.rule_id } : {};
-  return RuleDetail.findAll({ where: { ...queries } });
+  return RuleDetail.findAll({ where: { ...queries } }, { order: [['updated_at', 'DESC']] });
 }
 
 function getById(id) {
