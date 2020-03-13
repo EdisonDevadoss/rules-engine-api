@@ -12,8 +12,8 @@ function create(attributes) {
         const currentEdge = edges[0];
         const fact = {
           device_name: message.device_name,
-          temperature: message.temperature,
-          voltage: message.voltage
+          temperature: Number(message.temperature),
+          voltage: Number(message.voltage)
         };
         ruleExe(edges, currentEdge.source_id, fact, ruleDetailId);
       }
