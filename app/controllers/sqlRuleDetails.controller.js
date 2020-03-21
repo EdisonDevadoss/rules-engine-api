@@ -13,7 +13,8 @@ exports.create = (req, reply) => {
 
 
 exports.list = (req, reply) => {
-  SqlRuleDetailService.list()
+  const { query } = req;
+  SqlRuleDetailService.list(query)
     .then((rules) => {
       reply.code(200).send(rules);
     })
