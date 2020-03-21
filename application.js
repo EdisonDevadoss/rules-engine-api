@@ -11,6 +11,7 @@ const deviceRoutes = require('./app/routes/devices.routes');
 const ruleRoutes = require('./app/routes/rules.routes');
 const deviceMessagesRoutes = require('./app/routes/deviceMessages.routes');
 const ruleDetailsRoutes = require('./app/routes/ruleDetails.routes');
+const sqlRuleDetailsRoutes = require('./app/routes/sqlRuleDetails.routes');
 const notificationRoutes = require('./app/routes/notifications.routes');
 
 function build() {
@@ -31,6 +32,7 @@ function build() {
   fastify.register(ruleRoutes, { prefix: '/v1' });
   fastify.register(deviceMessagesRoutes, { prefix: '/v1' });
   fastify.register(ruleDetailsRoutes, { prefix: '/v1' });
+  fastify.register(sqlRuleDetailsRoutes, { prefix: '/v1' });
   fastify.register(notificationRoutes, { prefix: '/v1' });
 
   return fastify;
