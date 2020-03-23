@@ -7,9 +7,8 @@ function create(attributes) {
   return DeviceMessage.create(attributes).then(async (message) => {
     const ruleDetails = await RuleDetail.findAll();
     const sqlRuleDetails = await SqlRuleDetail.findAll();
-    console.log('sqlRuleDetails is', sqlRuleDetails);
     const fact = {
-      device_name: message.device_name,
+      deviceName: message.device_name,
       temperature: Number(message.temperature),
       voltage: Number(message.voltage)
     };
