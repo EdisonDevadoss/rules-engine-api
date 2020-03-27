@@ -8,7 +8,7 @@ function create(attributes) {
     const ruleDetails = await RuleDetail.findAll();
     const sqlRuleDetails = await SqlRuleDetail.findAll();
     const fact = {
-      deviceName: message.device_name,
+      device_name: message.device_name,
       temperature: Number(message.temperature),
       voltage: Number(message.voltage)
     };
@@ -20,11 +20,16 @@ function create(attributes) {
         ruleExe(edges, currentEdge.source_id, fact, ruleDetailId);
       }
     });
+    const factSql = {
+      deviceName: message.device_name,
+      temperature: Number(message.temperature),
+      voltage: Number(message.voltage)
+    };
     map(sqlRuleDetails, (sqlRuleDetail) => {
       const { rule } = sqlRuleDetail;
       const sqlRuleDetailId = sqlRuleDetail.id;
       if (size(rule) > 0) {
-        sqlRuleExe(rule, fact, sqlRuleDetailId);
+        sqlRuleExe(rule, factSql, sqlRuleDetailId);
       }
     });
     return message;
