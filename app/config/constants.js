@@ -1,7 +1,7 @@
 const convertOperator = {
   '=': 'equal',
   '>': 'greaterThan',
-  '<': 'lessThen',
+  '<': 'lessThan',
   '>=': 'greaterThanInclusive',
   '<=': 'lessThanInclusive'
 };
