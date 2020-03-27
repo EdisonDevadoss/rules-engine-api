@@ -12,14 +12,14 @@ function create(attributes) {
       temperature: Number(message.temperature),
       voltage: Number(message.voltage)
     };
-    // map(ruleDetails, (ruleDetail) => {
-    //   const { edges } = ruleDetail.rule;
-    //   const ruleDetailId = ruleDetail.id;
-    //   if (size(edges) > 0) {
-    //     const currentEdge = edges[0];
-    //     ruleExe(edges, currentEdge.source_id, fact, ruleDetailId);
-    //   }
-    // });
+    map(ruleDetails, (ruleDetail) => {
+      const { edges } = ruleDetail.rule;
+      const ruleDetailId = ruleDetail.id;
+      if (size(edges) > 0) {
+        const currentEdge = edges[0];
+        ruleExe(edges, currentEdge.source_id, fact, ruleDetailId);
+      }
+    });
     map(sqlRuleDetails, (sqlRuleDetail) => {
       const { rule } = sqlRuleDetail;
       const sqlRuleDetailId = sqlRuleDetail.id;
