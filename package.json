@@ -54,7 +54,7 @@
     "pg-hstore": "^2.3.3",
     "pino": "^5.17.0",
     "pino-pretty": "^3.5.0",
-    "sequelize": "^5.21.3",
+    "sequelize": "^6.29.0",
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
